@@ -1,0 +1,14 @@
+package com.kh.spring.member.model.service;
+
+public interface MemberService {
+
+	int returnNum();
+	
+	Memeber login();
+	
+	int insert();
+	
+	Member update();
+	
+	int delete();
+}

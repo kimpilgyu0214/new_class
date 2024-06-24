@@ -1,0 +1,35 @@
+package com.kh.spring.member.model.service;
+
+import org.springframework.stereotype.Service;
+
+import com.kh.spring.member.model.vo.Member;
+
+@Service
+public class MemberServiceImpl implements MemberService {
+
+	@Override
+	public int returnNum() {
+		return 1;
+	}
+
+	@Override
+	public Member login(Member member) {
+		return null;
+	}
+
+	@Override
+	public int insert(Member member) {
+		return 0;
+	}
+
+	@Override
+	public int update(Member member) {
+		return 0;
+	}
+
+	@Override
+	public int delete(String userId) {
+		return 0;
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;springProject/src/main/webapp/resources/uploadFiles/KH_20240621173047_91.png&apos;" deleteContents="false" description="Delete resource &apos;springProject/src/main/webapp/resources/uploadFiles/KH_20240621173047_91.png&apos;" element1="/springProject/src/main/webapp/resources/uploadFiles/KH_20240621173047_91.png" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1719188099448"/>
+</session>
