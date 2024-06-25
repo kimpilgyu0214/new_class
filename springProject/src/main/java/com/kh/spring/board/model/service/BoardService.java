@@ -41,7 +41,11 @@ public interface BoardService {
 	// 댓글 (AJAX / MyBatis)
 
 	int boardCount();
-
+	
+	
+	//사진 게시글 목록
+	List<Board> selectImages();
+	
 	
 
 	

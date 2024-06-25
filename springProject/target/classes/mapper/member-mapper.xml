@@ -83,5 +83,21 @@
 	</update>
 	
 	
+	<select id="idCheck" parameterType="String" resultType="_int">
+		
+		SELECT
+				COUNT(*)
+		   FROM	
+		   		MEMBER
+		   	WHERE
+		   		USER_ID = #{checkId}
+		   		
+	
+	
+	
+	
+	</select>
+	
+	
 	
 </mapper>

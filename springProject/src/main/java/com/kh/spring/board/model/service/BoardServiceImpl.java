@@ -64,6 +64,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepository.update(sqlSession, board);
 	}
 
+	@Override
+	public List<Board> selectImages() {
+		return boardRepository.selectImage(sqlSession);
+	}
+
 	
 	
 	

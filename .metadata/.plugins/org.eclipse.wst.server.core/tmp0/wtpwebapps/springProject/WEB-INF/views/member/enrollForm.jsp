@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     
@@ -22,6 +22,7 @@
                 <div class="form-group">
                     <label for="userId">* ID : </label>
                     <input type="text" class="form-control" id="userId" placeholder="Please Enter ID" name="userId" required> <br>
+                    <div id="checkResult" style="display:none;"></div><br><br>
 
                     <label for="userPwd">* Password : </label>
                     <input type="password" class="form-control" id="userPwd" placeholder="Please Enter Password" name="userPwd" required> <br>
@@ -45,17 +46,78 @@
                     <input type="text" class="form-control" id="address" placeholder="Please Enter Address" name="address"> <br>
                     
                     <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
-                    <input type="radio" id="Male" value="M" name="" checked>
+                    <input type="radio" id="Male" value="M" name="gender" checked>
                     <label for="Male">남자</label> &nbsp;&nbsp;
-                    <input type="radio" id="Female" value="F" name="">
+                    <input type="radio" id="Female" value="F" name="gender">
                     <label for="Female">여자</label> &nbsp;&nbsp;
                 </div> 
                 <br>
                 <div class="btns" align="center">
-                    <button type="submit" class="btn btn-primary">회원가입</button>
+                    <button type="submit" id="join-btn" class="btn btn-primary disabled">회원가입</button>
                     <button type="reset" class="btn btn-danger">초기화</button>
                 </div>
             </form>
+            <script>
+            	$(() => {
+            		
+            		const $idInput = $('.form-group #userId');
+            		const $checkResult = $('#checkResult');
+            		const $joinSubmit = $('#join-btn');
+            		
+            		$idInput.keyup(() => {
+            		
+            			
+            			//console.log(($idInput.val().length);
+            			  
+            			// 불필요한 DV 접근을 제한하기 위해 다섯글자 이상으로 입력했을 때만 ajax로 토스
+            			if($idInput.val().length >= 5){
+            				
+            				$.ajax({
+            					url : 'idCheck.do',
+            					type : 'get',
+            					data : {checkId : $idInput.val()
+            						},
+            						success : response => {
+            							
+            							
+            							if(response.substr(4) === 'N') {
+            								$checkResult.show().css('color', 'crimson').text('중복이다!');
+            								$joinSubmit.attr('disabled', true);
+            							}
+            							else {
+            								$checkResult.show().css('color', 'lightgreen').text('사용 가능');
+            								$joinSubmit.removeAttr('disabled');
+            							}
+            						},
+	            					error : () => {
+	            						console.log('꺼져')
+	            					}
+            					
+            				});
+            				
+            			}	
+            			else {
+            				$checkResult.hide();
+            				$joinSubmit.attr('disabled', true);
+            			}	
+            			
+            			
+            			
+            		});
+            		
+            		
+            		
+            		
+            		
+            		
+            		
+            		
+            	});
+            
+            </script>
+            
+            
+            
         </div>
         <br><br>
 

@@ -1,7 +1,5 @@
 package com.kh.spring.member.controller;
 
-import java.lang.ProcessBuilder.Redirect;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.member.model.service.MemberService;
@@ -216,7 +215,7 @@ public class MemberController {
 		
 		if(bcryptPasswordEncoder.matches(plainPwd, encPwd)) {
 		
-			log.info("회원아이디 :{}", )
+			//log.info("회원아이디 :{}", )
 			if (memberService.delete(member.getUserId()) > 0) {
 				session.setAttribute("alertMsg", "탈퇴성공");
 				session.removeAttribute("loginUser");
@@ -230,6 +229,32 @@ public class MemberController {
 			session.setAttribute("alertMsg", "비밀번호가 일치하지 않습니다.");
 			return "redirect:mypage.do";
 		}
+	}
+	
+	
+	
+	@GetMapping("idCheck.do")
+	@ResponseBody
+	public String checkId(String checkId) {
+		//log.info(checkId);
+		/*
+		int result = memberService.idCheck(checkId);
+		
+		if(result>0) {
+			return "NNNNN";
+			
+			
+		} else
+			return "NNNNY";
+		
+		
+		return result > 0 ? "NNNNN" : "NNNNY";
+		
+		*/
+		return memberService.idCheck(checkId) > 0 ? "NNNNN" : "NNNNY";
+		
+		
+		
 	}
 	
 }

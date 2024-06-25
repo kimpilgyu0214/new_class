@@ -350,7 +350,7 @@ public class BoardController {
 	}
 		
 		
-		public void saveFile(MultipartFile upfile, HttpSession session) {
+		public String saveFile(MultipartFile upfile, HttpSession session) {
 			
 			
 			
@@ -360,7 +360,7 @@ public class BoardController {
 			String ext = originName.substring(originName.lastIndexOf("."));
 
 			
-			int num = (int)(Math.random() * 100) + 1;
+			int num = (int)(Math.random() * 900) + 100;
 
 			
 
@@ -383,10 +383,19 @@ public class BoardController {
 		}
 	
 	
+		
+		@GetMapping("image-board")
+		public String image(Model model) {
+			
+			
+			//List<Board> images = boardService.selectImages();
+			model.addAttribute("board", boardService.selectImages());
+
+			return "board/imageList";
+		}
 	
 	
-	// 공지사항(Notice) :  상세보기, 수정하기, 삭제하기 구현
-	
+
 	
 	
 	
