@@ -112,5 +112,182 @@
             });
         }
     </script>
+    
+    
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    
+    <h3> 2. DB에서 SELECT문을  이용해서 조회했다는 가정하에 VO객체를 응답받아서  화면상에 출력해보기</h3>
+    
+    조회할 음식번호 : <input type = "number" id="menuNo"/> <br><br>
+    
+    <button id = "select-btn"> 조회</button><br>
+    
+    <div>
+    
+    </div>
+ 
+ 	<script>
+ 	
+ 		window.onload = ( ) => {
+ 			
+ 			document.getElementById('select-btn').onclick = () => {
+ 				
+ 				$.ajax({
+ 					url : 'ajax3.do',	
+ 					type : 'get',
+ 					data : {
+ 						menuNumber : document.getElementById('menuNo').value
+ 							
+ 					},
+ 					sucess : result  => {
+ 						console.log(result);
+ 						
+ 						const obj = {
+ 								"menuNumber" : "1",
+ 								"menuName" : "순두부",
+ 								"menuPrice" : "9500",
+ 								"material" : "순두부"
+ 						};
+ 						
+ 						console.log(obj);
+ 						
+ 						
+ 						const menu = '<ul>오늘의 메뉴 : '
+ 									+ '<li>' + result.menuName + '</li>'
+ 									+ '<li>' + rsult.price + '</li>'
+ 									+ '<li>재료 : ' + result.material + '</li>'
+ 									+ <'/ul>'
+ 									
+ 									document.getElementById('today-menu').innerHTML = menu;
+ 						
+ 						
+ 						
+ 						
+ 					},
+ 					error : e => {
+ 						console.log(e);
+ 					}
+ 				
+ 				});
+ 				
+ 			
+ 			
+ 				
+ 				
+ 				
+ 			};
+ 		
+ 		
+ 		}
+ 		
+ 		
+ 	    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 	
+ 	</script>   
+    
+	<h3>3. 조회 후 리스트를 응답받아서 출력</h3>
+	
+	<button onclick="findAll()">메뉴전체 조회</button>
+	<br><br> 
+	
+	<table border="1" id="find-result">
+		<thead>
+		 <tr>
+		 	<th>메뉴명</th>
+			<th>가격</th>
+			<th>재료</th>	
+		</tr>
+		</thead>
+		
+		<tbody id=>
+			
+		</tbody>
+	
+	
+	
+	
+	
+	
+	
+	
+	</table>   
+    
+    <script>
+    	function findAll() {
+    		
+    		$.ajax({
+    			url : 'find.do',
+    			type : 'get',
+    			success : result => {
+    				
+    				
+    				console.log(result);
+    		
+    				const tbodyEl = document.getElementById('tbody');
+    				
+    				result.map(o  => {
+
+    					
+    			
+	
+    				
+    				const trEl = document.createElement('tr');
+    			
+
+    		    				
+    				const tdElFirst = document.createElement('td');
+    				const firstText = document.createTextNode(result[0].menuName);
+    				td.First.style.width = '200px';
+    				tdFirst.appendChild(fistText);
+    				
+    				
+    				const tdSecond = decument.createElement('td');
+    				const SecondText = document.createNotd([result[0].price);
+    				tdSecond.style.width = '200px';
+    				tdSecond.appendChild(secondText);
+    			
+    				const tdThird = decument.createElement('td');
+    				const ThirdText = document.createNotd([result[0].price);
+    				tdThird.style.width = '100px';
+    				tdThird.appendChild(tdThird);
+    				
+    				trEl.appendChild(tdFirst);
+    				trEl.appendChild(tdSecond);
+    				trEl.appendChild(tdThird);
+    				
+    				console.log(trEl)
+    			
+    				tbodyEl.appendChild(trEl)
+    			
+    				});	
+    			
+    			
+    			}
+    			
+    			
+    			
+    			})
+    		
+    	
+    	
+    	}
+    
+    
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </body>
 </html>

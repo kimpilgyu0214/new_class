@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.spring.board.model.vo.Board;
+import com.kh.spring.board.model.vo.Reply;
 
 public interface BoardService {
 	// 게시글 전체조회 + 페이징 처리
@@ -50,7 +51,9 @@ public interface BoardService {
 
 	
 	
-	// 댓글 작성
-	
+	// 댓글 작성 - 목록조회
+	List<Reply> selectReply(int boardNo);
 	//
+	// 댓글 작성하기
+	int insertReply(Reply reply);
 }

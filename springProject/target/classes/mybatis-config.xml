@@ -11,6 +11,7 @@
   	<typeAliases>
   		<typeAlias type="com.kh.spring.member.model.vo.Member" alias="member" />
   		<typeAlias type="com.kh.spring.board.model.vo.Board" alias="board"/>
+  		<typeAlias type="com.kh.spring.board.model.vo.Reply" alias="reply"/>
   	</typeAliases>
   	
   	<!--   	주의할점! 별칭 등록을 하기 위해서는 반드시 해당클래스가 존재해야함! -->
@@ -18,6 +19,7 @@
   	<mappers>
   		<mapper resource="/mapper/member-mapper.xml"/>
   		<mapper resource="/mapper/board-mapper.xml"/>
+  	    
   	</mappers>
   
   	<!-- 주의할점! 매퍼 파일을 등록하기 위해서는 반드시 해당경로에 파일이 존재해야하고 namespace도 존재해야함 -->

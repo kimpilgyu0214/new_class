@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=springProject/C:\/Program Files\/Zulu\/zulu-11\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/11\/docs\/api\/=/&lt;java.lang.reflect(Member.class[Member" modifiers="1537" timestamp="1704442100000"/>
-    <typeInfo handle="=springProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.spring.member.model.service{MemberService.java[MemberService" modifiers="513" timestamp="1719187422804"/>
+    <typeInfo handle="=springProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.spring.member.model.service{MemberService.java[MemberService" modifiers="513" timestamp="1719299936899"/>
 </typeInfoHistroy>
