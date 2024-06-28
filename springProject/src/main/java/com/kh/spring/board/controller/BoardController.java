@@ -425,11 +425,24 @@ public class BoardController {
 	
 	
 	
+		
+		@GetMapping("board-reply")
+		@ResponseBody
+		public Board boardAndReply(int boardNo) {
+			
+			return boardService.boardAndReply(boardNo);
+			
+			
+	
+		}
 	
 	
 	
 	
-	
+		@GetMapping("var")
+		public String varForward() {
+			return "common/variable";
+		}
 	
 	
 	

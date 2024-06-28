@@ -56,4 +56,11 @@ public interface BoardService {
 	//
 	// 댓글 작성하기
 	int insertReply(Reply reply);
+	
+	// Board랑 Board에 딸린 Reply랑 같이 조회
+	Board boardAndReply(int boardNo);
+
+	
+	//-----------------------------------TOP-n
+	List<Board> findTopFiveBoard();
 }

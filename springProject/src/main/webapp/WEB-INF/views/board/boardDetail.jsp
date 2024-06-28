@@ -131,7 +131,7 @@
                     </c:otherwise>
                   </c:choose>  
                     <tr>
-                        <td colspan="3">댓글(<span id="rcount">0</span>)</td>
+                        <td colspan="3">댓글<span id="rcount">0</span>)</td>
                     </tr>
                 </thead>
                 <tbody>
