@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NoticeFowardController {
 
 	
-	@GetMapping("notice")
+	@GetMapping("notices")
 	public String notices() {
 		return "api/notice";
 	}

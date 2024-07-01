@@ -5,6 +5,21 @@
 <mapper namespace="com.kh.spring.notice.model.dao.NoticeMapper">
 
 
+
+	<sql id="selectNotice">
+				SELECT 
+				NOTICE_NO noticeNo,
+				NOTICE_TITLE noticeTitle,
+				NOTICE_WRITER noticeWriter,
+				NOTICE_CONTENT noticeContent,
+				CREATE_DATE createDate
+				
+		FROM
+				NOTICE
+	
+	
+	</sql>
+
 	<select id="findAll" resultType="notice">
 	
 		SELECT 
@@ -21,7 +36,50 @@
 		  		NOTICE_NO DESC
 	
 	</select>
+	
+	<select id="findById" resultType="notice" parameterType="_int">
+	
+		SELECT 
+				NOTICE_NO noticeNo,
+				NOTICE_TITLE noticeTitle,
+				NOTICE_WRITER noticeWriter,
+				NOTICE_CONTENT noticeContent,
+				CREATE_DATE createDate
+		FROM
+				NOTICE
+				
+		WHERE
+				NOTICE_NO = #{noticeNo}	
+	</select>
+	
+	<insert id="save" parameterType="notice">
+	
+		INSERT
+		  INTO
+		  		NOTICE
+		VALUES
+				(
+				SEQ_NNO.NEXTVAL,
+				#{noticeTitle},
+				#{noticeWriter},
+				#{noticeContent},
+				SYSDATE
+				)
+				
+	
+	</insert>
+	
+	<delete id="delete" parameterType="_int">
+	
+		DELETE
+				NOTICE
+		WHERE
+				NOTICE_NO = #{noticeNo}	
+			
+	</delete>
+	
 
+	
 	
 	
 

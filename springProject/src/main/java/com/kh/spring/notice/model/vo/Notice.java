@@ -18,7 +18,7 @@ public class Notice {
 	
 	
 	
-	private int noticeNO;
+	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
 	private String noticeWriter;
