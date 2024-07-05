@@ -6,6 +6,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.kh.api.model.vo.AirVO;
 
 public class ApiJavaApp {
 
@@ -48,17 +55,18 @@ public class ApiJavaApp {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 		
-		/*
-		System.out.println(br.readLine());
+		
+		//System.out.println(br.readLine());
 		
 		
 		
-		String responseXml="";
+		
+	/*	String responseXml="";
 		while((responseXml = br.readLine()) !=null) {
 			System.out.println(responseXml);
 		}
-		*/
 		
+		*/
 		String responseJson = br.readLine();
 		//System.out.println(responseJson);
 		
@@ -71,23 +79,57 @@ public class ApiJavaApp {
 		// JSONObject, JSONArray => 자바 데이터를 => JSON => JSON라이브러리
 		
 		
+		JsonObject jsonObj = JsonParser.parseString(responseJson).getAsJsonObject();
+		//System.out.println(jsonObject);
+		
+		
+		JsonObject responseObj = jsonObj.getAsJsonObject("response");
+		
+		JsonObject bodyObj = responseObj.getAsJsonObject("body");
+		
+		int totalCount = bodyObj.get("totalCount").getAsInt();
+		//int totalCount = bodyObj.get("totalCount").getAsInt();
+		//System.out.println(totalCount);
+		
+		
+		JsonArray items = bodyObj.getAsJsonArray("items"); // items property => : [] JsonArray
+		//System.out.println(items);
+		
+		//JsonObject firstItem = items.get(0).getAsJsonObject();
+		//System.out.println(firstItem);
+		
+		
+		List<AirVO> list = new ArrayList();
+		
+		for(int i = 0; i< items.size(); i ++) {
+			
+			JsonObject firstItem = items.get(i).getAsJsonObject();
+		
+			AirVO air = new AirVO();
+			
+			air.setPm10Value(firstItem.get("pm10Value").getAsString());
+			air.setStationName(firstItem.get("stationName").getAsString());
+			air.setDataTime(firstItem.get("dataTime").getAsString());
+			air.setO3Value(firstItem.get("o3Value").getAsString());
+			air.setKhaiValue(firstItem.get("khaiValue").getAsString());
+			
+			list.add(air);
+		 
+		//System.out.println(air);
+		}
+	
+		
+		for(AirVO air : list) {	
+			System.out.println(air);
+		
+		}	
 		
 		
 		
+		//자원반납
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		br.close();
+		urlConnection.disconnect();
 		
 		
 		
